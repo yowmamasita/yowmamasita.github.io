@@ -1,1 +1,68 @@
+==================================================================
+https://keybase.io/bensarmiento
+--------------------------------------------------------------------
 
+I hereby claim:
+
+  * I am an admin of https://bensarmiento.com
+  * I am bensarmiento (https://keybase.io/bensarmiento) on keybase.
+  * I have a public key with fingerprint 8BC9 B7F4 EEBA A8A9 91F0  DFF0 1FE6 C7AB 35B2 D8F4
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "0101ec72ffeb14240a87fd2b411ee58b8c6b06ba6eb38b88ef1d40a2a1702d8951290a",
+            "fingerprint": "8bc9b7f4eebaa8a991f0dff01fe6c7ab35b2d8f4",
+            "host": "keybase.io",
+            "key_id": "1fe6c7ab35b2d8f4",
+            "kid": "0101ec72ffeb14240a87fd2b411ee58b8c6b06ba6eb38b88ef1d40a2a1702d8951290a",
+            "uid": "cf9782c635d012a072c4d79e695ecc00",
+            "username": "bensarmiento"
+        },
+        "service": {
+            "hostname": "bensarmiento.com",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1467596407,
+    "expire_in": 157680000,
+    "prev": "df612fac8599f879d5d3c233e654c7a529cb894234ccc928e385ae5fbd826f0e",
+    "seqno": 8,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.0.53
+Comment: https://keybase.io/crypto
+
+yMIoAnicrZJrSBRRFMfXSlFJetA7I5skISznPXe2ICKzxA8JVkJF27137tXxMbPu
+jFu6bNFL6AVZQUlgZQTlhqH0+JAsWkHBEqkhK0iiRPVBqCx6Q3VH6lsfu18u557f
+/3/POZxHWVN9mSmD556eSCuaNZiS6L1U7ytviO+NcMg2Gjh/hKsmkxepMYjjBqpN
+g/NzvMALBGsipQQJsijzEGjUEJEsCIQoAAGsIl5FUCVIYhEgVDAYJEJB40UD6Iog
+6jzk8jlqWhUkFAyZlstsAcI60qhMCIIQQF0XKG9QyguUqFiDSFIQU1OZCSttx1Ow
+4hB0yGrTZm8sCEyW9w/+P9ddP2mHqa4BEauSYvCCCHlNxLKh6UTVFYIxz3ugQ0IW
+rCWMRsRyYKjWJJZrc9F8jmXCJibecL1u/kGtxnYt8wiGbNfGdg3LVrpu0PF7arch
+6OF7CQr8MQog0zLYPJkiTEKOaVucX2Akdk3PWZBVTdFVmdfyObIvaIZIwPQIRVMB
+z473DwkzS4OqgkghBoquU6DphmJIWJQkoioym6oi6hgBXRYlGWOsi4BIQIFEocgA
+okp5wnmt1Vk25wesTFjBLB2zwoJufYhw0Qc9u6b5UjJ9aalTvD3zZWbM/Lt98aXp
+vuPN/e0RtGB05KnZ3b4r5eSr3u8TB4Ya83FJlrI71p1RWHRyOLkQ/WySsh52FnQ1
+vd0YuT43sn5+8Y+unHOPCm+XTtM3+zs7+m+8+7noTO6OcMem01+PfblQFuXHZWFW
+rJTbmZvoTD5582lgIpG3NX75WrRqqDh2dCB17ZK6xo4LK5dPPN95qmW5WFaQ/jGW
+XWyOpM+50trXJq84Ud49O7Gq/e7B7eXvh579mnN24F7L2Fjf9BW5dlXPeHVrT2zb
+cOPFjL5v8ZdHRq+S16dzBtH5s2vuBG7S+3nNzuP76wJbn8HS5OF96/s/HFqcfWve
+psoZL5qbqj9/2DB9T0nbloKh/cuS8d8Npku1
+=+Fim
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/bensarmiento
+
+==================================================================

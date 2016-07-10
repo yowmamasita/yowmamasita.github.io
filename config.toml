@@ -1,3 +1,5 @@
+publishdir = "."
+
 # Site settings
 baseurl = "https://bensarmiento.com" #without ending slash
 languageCode = "en-us"

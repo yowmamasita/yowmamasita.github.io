@@ -65,9 +65,9 @@ googleAnalytics = "UA-80507391-1"
 		link = "https://twitter.com/bensarmiento"
 
 	[[params.social]]
-		title = "Instagram"
-		icon = "fa-instagram"
-		link = "https://www.instagram.com/bensarmiento/"
+		title = "LinkedIn"
+		icon = "fa-linkedin"
+		link = "https://ph.linkedin.com/in/bensarmiento"
 		
 	[[params.social]]
 		title = "Facebook"

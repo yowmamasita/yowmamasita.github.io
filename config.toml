@@ -61,7 +61,7 @@ googleAnalytics = "UA-80507391-1"
 
 	[[params.social]]
 		title = "Blog"
-		icon = "fa-comment-o"
+		icon = "fa-comment"
 		link = "https://blog.bensarmiento.com"
 		
 	[[params.social]]

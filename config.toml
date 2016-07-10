@@ -60,19 +60,19 @@ googleAnalytics = "UA-80507391-1"
 	# You may change these with your social links or add others
 
 	[[params.social]]
-		title = "Twitter"
-		icon = "fa-twitter"
-		link = "https://twitter.com/bensarmiento"
-
-	[[params.social]]
-		title = "LinkedIn"
-		icon = "fa-linkedin"
-		link = "https://ph.linkedin.com/in/bensarmiento"
+		title = "Blog"
+		icon = "fa-comment-o"
+		link = "https://blog.bensarmiento.com"
 		
 	[[params.social]]
 		title = "Facebook"
 		icon = "fa-facebook"
 		link = "https://www.facebook.com/bensarmiento"
+
+	[[params.social]]
+		title = "LinkedIn"
+		icon = "fa-linkedin"
+		link = "https://ph.linkedin.com/in/bensarmiento"
   
   [[params.social]]
 		title = "Github"

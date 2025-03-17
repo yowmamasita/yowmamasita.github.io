@@ -1,111 +1,188 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ben Adrian C. Sarmiento</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        color: #000080;
+      }
 
-<html lang="en-us">
-<html>
-	<head>
-		<title>Ben Adrian Sarmiento</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="icon" href="/images/icons/favicon.ico" type="image/x-icon" />
-		<link rel="apple-touch-icon-precomposed" href="/images/icons/apple-touch-icon-precomposed.png" />
+      a {
+        color: #800080;
+        text-decoration: none;
+      }
 
-		<link rel="stylesheet" href="/assets/css/main.css" />
+      a:visited {
+        color: #ff0000;
+      }
 
+      .header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
 
-		<noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
-		<style>
-		body {
-		height: 100%;
-		background-color: #ffffff;
-		background-image: url("images/overlay.png"), -moz-linear-gradient(60deg, rgba(255, 165, 150, 0.5) 5%, rgba(0, 228, 255, 0.35)), url("images/backgrounds/bg1.jpg");
-		background-image: url("images/overlay.png"), -webkit-linear-gradient(60deg, rgba(255, 165, 150, 0.5) 5%, rgba(0, 228, 255, 0.35)), url("images/backgrounds/bg1.jpg");
-		background-image: url("images/overlay.png"), -ms-linear-gradient(60deg, rgba(255, 165, 150, 0.5) 5%, rgba(0, 228, 255, 0.35)), url("images/backgrounds/bg1.jpg");
-		background-image: url("images/overlay.png"), linear-gradient(60deg, rgba(255, 165, 150, 0.5) 5%, rgba(0, 228, 255, 0.35)), url("images/backgrounds/bg1.jpg");
-		background-repeat: repeat,			no-repeat,			no-repeat;
-		background-size: 100px 100px, cover,				cover;
-		background-position: top left,		center center,		bottom center;
-		background-attachment: fixed,			fixed,				fixed;
-			}
-		</style>
-		<meta name="generator" content="Hugo 0.16" />
-	</head>
-	<body class="is-loading">
+      .contact-info {
+        font-size: 0.9em;
+        margin: 10px 0;
+      }
 
+      nav {
+        margin: 20px 0;
+      }
 
-			<div id="wrapper">
+      nav ul {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        list-style: none;
+        padding: 0;
+      }
 
+      section {
+        margin: 40px 0;
+      }
 
-					<section id="main">
-						<header>
-							<span class="avatar"><img src="/images/avatars/avatar2020.png" alt="" /></span>
-							<h1>Ben Adrian Sarmiento</h1>
-							<p>IAM Platform, Engineering Manager | Forto</p>
-							<p>Ex-Head of Engineering | Nimbly Technologies</p>
-							<p>Marketing Tech, Ex-Engineering Manager | Foodpanda, Delivery Hero</p>
-							<p>Ex-Head of Technology | Carmudi</p>
-							<p>DevOps | Cloud Native | Agile</p>
-						</header>
+      .section-title {
+        text-align: center;
+        font-size: 1.5em;
+        margin-bottom: 20px;
+      }
 
-																<hr />
-						<h2>Get in touch</h2>
-						<form method="post" action="//formspree.io/me@bensarmiento.com">
-							<div class="field">
-								<input type="text" name="name" id="name" placeholder="Name" />
-							</div>
-							<div class="field">
-								<input type="email" name="email" id="email" placeholder="Email" />
-							</div>
-							<div class="field">
-								<textarea name="message" id="message" placeholder="Message" rows="4"></textarea>
-							</div>
-							<ul class="actions">
-								<li><button type="submit">Send</button></li>
-							</ul>
-						</form>
-						<hr />
+      .skills-list {
+        list-style: none;
+        padding: 0;
+      }
 
-						<footer>
-							<ul class="icons">
+      .experience-item {
+        margin-bottom: 15px;
+      }
 
-									<li><a href="https://ben.com.de" target="_blank" class="fa-comment">DEV.to</a></li>
+      .experience-title {
+        font-weight: bold;
+        text-transform: uppercase;
+      }
 
-									<li><a href="https://ph.linkedin.com/in/bensarmiento" target="_blank" class="fa-linkedin">LinkedIn</a></li>
+      .projects-list {
+        text-align: center;
+        list-style: none;
+        padding: 0;
+      }
 
-									<li><a href="https://github.com/yowmamasita" target="_blank" class="fa-github">Github</a></li>
+      .projects-list li {
+        margin: 10px 0;
+      }
 
-									<li><a href="https://keys.mailvelope.com/pks/lookup?op=get&search=me%40bensarmiento.com" target="_blank" class="fa-key">PGP Key</a></li>
+      footer {
+        text-align: center;
+        font-size: 0.9em;
+        margin-top: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <h1>Ben Adrian C. Sarmiento</h1>
+      <div class="contact-info">
+        Hartriegelstraße 130A, Berlin 12439<br>
+        +4915774990994 | me@bensarmiento.com<br>
+        <a href="https://www.linkedin.com/in/bensarmiento" target="_blank" rel="noopener">LinkedIn</a> |
+        <a href="https://github.com/yowmamasita" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </header>
 
-							</ul>
-						</footer>
-					</section>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#resume">Resume</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
 
+    <main>
+      <section id="about">
+        <h2 class="section-title">About</h2>
+        <p>Full-stack technology leader with expertise in web applications, mobile apps, and cloud services.</p>
+      </section>
 
-					<footer id="footer">
-						<ul class="copyright">
-							<li>&copy; Ben Sarmiento</li>
-						</ul>
-					</footer>
+      <section id="resume">
+        <h2 class="section-title">Resume</h2>
 
-			</div>
+        <h3>Professional Experience</h3>
+        <div class="experience-item">
+          <div class="experience-title">Staff Engineer | Enter | September 2024 to Present</div>
+          <p>Developed features for Digital Twin crew simulating building energy efficiency ratings.</p>
+        </div>
 
+        <div class="experience-item">
+          <div class="experience-title">Engineering Manager, Platform/IAM | Forto | January 2022 to August 2024</div>
+          <p>Migrated authentication systems, introduced automated load testing, and deployed centralized authorization system.</p>
+        </div>
 
+        <div class="experience-item">
+          <div class="experience-title">Head of Engineering | Nimbly Technologies | February 2021 to January 2022</div>
+          <p>Reduced app crash rates, increased observability, and set up CI/CD pipelines for mobile, web, and backend services.</p>
+        </div>
 
-			<script>
-				if ('addEventListener' in window) {
-					window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-loading\b/, ''); });
-					document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
-				}
-			</script>
+        <div class="experience-item">
+          <div class="experience-title">Engineering Manager, Marketing Tech | Delivery Hero | September 2019 to February 2021</div>
+          <p>Managed high-traffic services, incident management, and improved critical testing coverage.</p>
+        </div>
 
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        <div class="experience-item">
+          <div class="experience-title">Head of Technology | Carmudi | October 2016 to September 2019</div>
+          <p>Optimized cloud costs, streamlined build pipelines, and grew the tech department.</p>
+        </div>
 
-ga('create', 'UA-80507391-1', 'auto');
-ga('send', 'pageview');
-</script>
+        <div class="experience-item">
+          <div class="experience-title">Associate Manager | Accenture | February 2014 to October 2016</div>
+          <p>Worked on microservices and cloud-based tools for large-scale operations.</p>
+        </div>
 
-	</body>
+        <div class="experience-item">
+          <div class="experience-title">Founder | MangoVPN | September 2011 to March 2012</div>
+          <p>Built and scaled a VPN service.</p>
+        </div>
+
+        <h3>Technical Skills</h3>
+        <ul class="skills-list">
+          <li>Full-Stack Development & Tech Leadership</li>
+          <li>Product & Engineering Management</li>
+          <li>DevOps Practices & Kubernetes</li>
+          <li>Test-Driven Development (TDD) & Automated Testing</li>
+          <li>Open-Source Community Contributions</li>
+        </ul>
+      </section>
+
+      <section id="projects">
+        <h2 class="section-title">Projects & Links</h2>
+        <ul class="projects-list">
+          <li><a href="https://github.com/yowmamasita" target="_blank" rel="noopener">GitHub Profile</a></li>
+          <li><a href="https://www.linkedin.com/in/bensarmiento" target="_blank" rel="noopener">LinkedIn Profile</a></li>
+          <li><a href="https://github-readme-stats.vercel.app/api?username=yowmamasita&theme=github_dark&show_icons=true" target="_blank" rel="noopener">GitHub Stats</a></li>
+          <li><a href="https://mastodon.social/@12345" target="_blank" rel="noopener">Home Internet Speed Monitor</a></li>
+          <li><a href="https://debridmediamanager.com/" target="_blank" rel="noopener">Debrid Media Manager</a></li>
+          <li><a href="https://apps.apple.com/de/app/padel-scorer/id6449323433?l=en" target="_blank" rel="noopener">Padel Scorer App</a></li>
+        </ul>
+      </section>
+
+      <section id="contact">
+        <h2 class="section-title">Contact</h2>
+        <p style="text-align: center">
+          Email: <a href="mailto:me@bensarmiento.com">me@bensarmiento.com</a>
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <a href="#contact">Contact</a> | &copy; 2011-2025 Ben Adrian C. Sarmiento
+    </footer>
+  </body>
 </html>

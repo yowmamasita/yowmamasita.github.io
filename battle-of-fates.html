@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="en">
+  <head>
+    <title>Battle of Fates - Season 1</title>
+    <meta content="text/html; charset=unicode" http-equiv="Content-Type">
+    <meta name="description" content="Watch Battle of Fates Season 1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <style>
+      .episode-btn {
+        display: inline-block;
+        padding: 8px 16px;
+        margin: 4px;
+        background-color: #800080;
+        color: #ffffff;
+        text-decoration: none;
+        font-family: serif;
+        font-size: 14px;
+        border: 2px outset #c0c0c0;
+        cursor: pointer;
+      }
+      .episode-btn:hover {
+        background-color: #a000a0;
+      }
+      .episode-btn.active {
+        background-color: #000080;
+        border-style: inset;
+      }
+      .player-container {
+        width: 100%;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      .player-container iframe {
+        width: 100%;
+        height: 506px;
+        border: 2px inset #c0c0c0;
+      }
+    </style>
+  </head>
+  <body link="#800080" bgcolor="#ffffff" text="#000080" vlink="#ff0000">
+    <b>
+      <p align="center">
+        <font size="6">B</font><font size="4">attle of </font>
+        <font size="6">F</font><font size="4">ates</font>
+        <br><font size="2">Season 1 | <a href="https://www.imdb.com/title/tt39961100/" target="_blank">IMDb</a></font>
+        <br><font size="1"><a href="/">bensarmiento.com</a></font>
+      </p>
+    </b>
+    <hr>
+
+    <p align="center">
+      <a class="episode-btn active" href="#" onclick="play(0); return false;">E01</a>
+      <a class="episode-btn" href="#" onclick="play(1); return false;">E02</a>
+      <a class="episode-btn" href="#" onclick="play(2); return false;">E03</a>
+      <a class="episode-btn" href="#" onclick="play(3); return false;">E04</a>
+      <a class="episode-btn" href="#" onclick="play(4); return false;">E05</a>
+      <a class="episode-btn" href="#" onclick="play(5); return false;">E06</a>
+      <a class="episode-btn" href="#" onclick="play(6); return false;">E07</a>
+      <a class="episode-btn" href="#" onclick="play(7); return false;">E08</a>
+      <a class="episode-btn" href="#" onclick="play(8); return false;">E09</a>
+      <a class="episode-btn" href="#" onclick="play(9); return false;">E10</a>
+    </p>
+
+    <div class="player-container">
+      <iframe id="player" src="" frameborder="0" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+    </div>
+
+    <p align="center"><font size="2" id="now-playing"><b>Now Playing:</b> Episode 1</font></p>
+
+    <hr>
+    <p align="center"><font size="1"><a href="/">Back to Home</a></font></p>
+
+    <script>
+      var episodes = [
+        "https://bysesukior.com/e/5fap36rko8ff?c1_file=https%3A%2F%2Fseeeeed.debridmediamanager.com%2Fsubs%2F5fap36rko8ff%2Feng.vtt&c1_label=English&c2_file=https%3A%2F%2Fseeeeed.debridmediamanager.com%2Fsubs%2F5fap36rko8ff%2Feng2.vtt&c2_label=English%20%28SDH%29&c3_file=https%3A%2F%2Fseeeeed.debridmediamanager.com%2Fsubs%2F5fap36rko8ff%2Fkor.vtt&c3_label=Korean%20%5BCC%5D",
+        "https://bysesukior.com/e/simwb1lzzjwu?c1_file=https%3A%2F%2Fseeeeed.debridmediamanager.com%2Fsubs%2Fsimwb1lzzjwu%2Feng.vtt&c1_label=English&c2_file=https%3A%2F%2Fseeeeed.debridmediamanager.com%2Fsubs%2Fsimwb1lzzjwu%2Feng2.vtt&c2_label=English%20%28SDH%29&c3_file=https%3A%2F%2Fseeeeed.debridmediamanager.com%2Fsubs%2Fsimwb1lzzjwu%2Fkor.vtt&c3_label=Korean%20%5BCC%5D",
+        "https://bysesukior.com/e/yy8ku7o0adrn?c1_file=https%3A%2F%2Fseeeeed.debridmediamanager.com%2Fsubs%2Fyy8ku7o0adrn%2Feng.vtt&c1_label=English&c2_file=https%3A%2F%2Fseeeeed.debridmediamanager.com%2Fsubs%2Fyy8ku7o0adrn%2Feng2.vtt&c2_label=English%20%28SDH%29&c3_file=https%3A%2F%2Fseeeeed.debridmediamanager.com%2Fsubs%2Fyy8ku7o0adrn%2Fkor.vtt&c3_label=Korean%20%5BCC%5D",
+        "https://bysesukior.com/e/8h38xd1n7jpe?c1_file=https%3A%2F%2Fseeeeed.debridmediamanager.com%2Fsubs%2F8h38xd1n7jpe%2Feng.vtt&c1_label=English&c2_file=https%3A%2F%2Fseeeeed.debridmediamanager.com%2Fsubs%2F8h38xd1n7jpe%2Feng2.vtt&c2_label=English%20%28SDH%29&c3_file=https%3A%2F%2Fseeeeed.debridmediamanager.com%2Fsubs%2F8h38xd1n7jpe%2Fkor.vtt&c3_label=Korean%20%5BCC%5D",
+        "https://bysesukior.com/e/pa9680mtm1f1?c1_file=https%3A%2F%2Fseeeeed.debridmediamanager.com%2Fsubs%2Fpa9680mtm1f1%2Feng.vtt&c1_label=English%20%28SDH%29&c2_file=https%3A%2F%2Fseeeeed.debridmediamanager.com%2Fsubs%2Fpa9680mtm1f1%2Fkor.vtt&c2_label=Korean%20%5BCC%5D",
+        "https://bysesukior.com/e/45o3yqb4e5kv?c1_file=https%3A%2F%2Fseeeeed.debridmediamanager.com%2Fsubs%2F45o3yqb4e5kv%2Feng.vtt&c1_label=English%20%28SDH%29&c2_file=https%3A%2F%2Fseeeeed.debridmediamanager.com%2Fsubs%2F45o3yqb4e5kv%2Fkor.vtt&c2_label=Korean%20%5BCC%5D",
+        "https://bysesukior.com/e/lpr1wk5f41wi?c1_file=https%3A%2F%2Fseeeeed.debridmediamanager.com%2Fsubs%2Flpr1wk5f41wi%2Feng.vtt&c1_label=English%20%28SDH%29&c2_file=https%3A%2F%2Fseeeeed.debridmediamanager.com%2Fsubs%2Flpr1wk5f41wi%2Fkor.vtt&c2_label=Korean%20%5BCC%5D",
+        "https://bysesukior.com/e/k7dr4rfmvh8u?c1_file=https%3A%2F%2Fseeeeed.debridmediamanager.com%2Fsubs%2Fk7dr4rfmvh8u%2Feng.vtt&c1_label=English%20%28SDH%29&c2_file=https%3A%2F%2Fseeeeed.debridmediamanager.com%2Fsubs%2Fk7dr4rfmvh8u%2Fkor.vtt&c2_label=Korean%20%5BCC%5D",
+        "https://bysesukior.com/e/yfy9e67k4aty?c1_file=https%3A%2F%2Fseeeeed.debridmediamanager.com%2Fsubs%2Fyfy9e67k4aty%2Feng.vtt&c1_label=English%20%28SDH%29&c2_file=https%3A%2F%2Fseeeeed.debridmediamanager.com%2Fsubs%2Fyfy9e67k4aty%2Fkor.vtt&c2_label=Korean%20%5BCC%5D",
+        "https://bysesukior.com/e/2yl9alz76pi2"
+      ];
+
+      function play(index) {
+        document.getElementById("player").src = episodes[index];
+        document.getElementById("now-playing").innerHTML = "<b>Now Playing:</b> Episode " + (index + 1) + (index === 9 ? " (no subs)" : "");
+        var btns = document.getElementsByClassName("episode-btn");
+        for (var i = 0; i < btns.length; i++) {
+          btns[i].className = "episode-btn";
+        }
+        btns[index].className = "episode-btn active";
+      }
+
+      play(0);
+    </script>
+  </body>
+</html>

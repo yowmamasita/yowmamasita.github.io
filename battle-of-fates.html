@@ -82,12 +82,12 @@
         "https://bysesukior.com/e/lpr1wk5f41wi?c1_file=https%3A%2F%2Fseeeeed.debridmediamanager.com%2Fsubs%2Flpr1wk5f41wi%2Feng.vtt&c1_label=English%20%28SDH%29&c2_file=https%3A%2F%2Fseeeeed.debridmediamanager.com%2Fsubs%2Flpr1wk5f41wi%2Fkor.vtt&c2_label=Korean%20%5BCC%5D",
         "https://bysesukior.com/e/k7dr4rfmvh8u?c1_file=https%3A%2F%2Fseeeeed.debridmediamanager.com%2Fsubs%2Fk7dr4rfmvh8u%2Feng.vtt&c1_label=English%20%28SDH%29&c2_file=https%3A%2F%2Fseeeeed.debridmediamanager.com%2Fsubs%2Fk7dr4rfmvh8u%2Fkor.vtt&c2_label=Korean%20%5BCC%5D",
         "https://bysesukior.com/e/yfy9e67k4aty?c1_file=https%3A%2F%2Fseeeeed.debridmediamanager.com%2Fsubs%2Fyfy9e67k4aty%2Feng.vtt&c1_label=English%20%28SDH%29&c2_file=https%3A%2F%2Fseeeeed.debridmediamanager.com%2Fsubs%2Fyfy9e67k4aty%2Fkor.vtt&c2_label=Korean%20%5BCC%5D",
-        "https://bysesukior.com/e/2yl9alz76pi2"
+        "https://bysesukior.com/e/2yl9alz76pi2?c1_file=https%3A%2F%2Fbensarmiento.com%2Fsubs%2Fbattle-of-fates-s01e10-eng.vtt&c1_label=English"
       ];
 
       function play(index) {
         document.getElementById("player").src = episodes[index];
-        document.getElementById("now-playing").innerHTML = "<b>Now Playing:</b> Episode " + (index + 1) + (index === 9 ? " (no subs)" : "");
+        document.getElementById("now-playing").innerHTML = "<b>Now Playing:</b> Episode " + (index + 1);
         var btns = document.getElementsByClassName("episode-btn");
         for (var i = 0; i < btns.length; i++) {
           btns[i].className = "episode-btn";

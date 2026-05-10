@@ -59,9 +59,8 @@
         );
 
         const html = new TextDecoder().decode(plain);
-        document.open();
-        document.write(html);
-        document.close();
+        const blob = new Blob([html], { type: "text/html" });
+        location.replace(URL.createObjectURL(blob));
       } catch {
         // wrong key or tampered data — leave the error message visible
       }

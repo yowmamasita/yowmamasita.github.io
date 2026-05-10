@@ -93,7 +93,14 @@
 
         const { title, body } = JSON.parse(new TextDecoder().decode(plain));
         document.getElementById("title").textContent = title;
-        document.getElementById("body").innerHTML = body;
+        const sanitized = new DOMParser().parseFromString(body, "text/html");
+        sanitized.querySelectorAll("script,iframe,object,embed,form").forEach(el => el.remove());
+        sanitized.querySelectorAll("[onload],[onerror],[onclick],[onmouseover]").forEach(el => {
+          for (const attr of [...el.attributes]) {
+            if (attr.name.startsWith("on")) el.removeAttribute(attr.name);
+          }
+        });
+        document.getElementById("body").innerHTML = sanitized.body.innerHTML;
         document.getElementById("error").style.display = "none";
         document.getElementById("content").style.display = "block";
         document.title = title;

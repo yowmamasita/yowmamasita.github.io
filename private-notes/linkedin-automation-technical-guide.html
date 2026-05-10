@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Private Note</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, sans-serif;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+      color: #333;
+      line-height: 1.7;
+    }
+    #error {
+      text-align: center;
+      padding: 4rem 1rem;
+      color: #999;
+    }
+    #error h1 { font-size: 1.3rem; margin-bottom: 0.5rem; }
+    #error p { font-size: 0.95rem; }
+    #content { display: none; }
+    #content h1 {
+      font-size: 1.6rem;
+      margin-bottom: 0.3rem;
+      color: #111;
+    }
+    #content .meta {
+      color: #999;
+      font-size: 0.85rem;
+      margin-bottom: 1.5rem;
+    }
+    #content .body { font-size: 1.05rem; }
+    #content .body p { margin-bottom: 1rem; }
+    #content .body img { max-width: 100%; height: auto; }
+    #content .body a { color: #4a7baa; }
+    footer {
+      margin-top: 3rem;
+      padding-top: 1rem;
+      border-top: 1px solid #eee;
+      font-size: 0.8rem;
+      color: #bbb;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="error">
+    <h1>This note requires a valid link</h1>
+    <p>Ask the person who shared it for the full URL.</p>
+  </div>
+  <div id="content">
+    <h1 id="title"></h1>
+    <div class="body" id="body"></div>
+  </div>
+  <footer>Private family note &mdash; not for public distribution</footer>
+
+  <script>
+    (async function () {
+      const keyStr = location.hash.slice(1);
+      if (!keyStr) return;
+
+      const encData = "qx6czQZ5fOdALK9NCvwNSvhHChrADzARfmDe7gOUQC_6MYmELfoohasbDtH2VzBOfIPI2O8Ugnf1lMKlMyjcBSlDEatvEYNtv3e3kInUvqwKd_dhHEID8dMeNhkZovIC5ucy-_ReyzYWV6gSay8NPSqLMMJBn14UZDhNZlrmM1U9c-MKggnEwruHcIBRYRQj-MnVL6Yd9MT4Pudry_vM5Y4aPbRsZp26D4wZD2lvCK6XuPD2Vs5yU07knzoGijZqKDh9DelI2XP__ezCir6YpRkg1_W-i_bQyPyb_ipXkYrwQeWxpsigGyyCUnAn5OYplm7jeCl_pt9HxqIetuR8Y3LbeH2RyXbNo7KdaY7-CtzjwhE25s4MNy0dhSud5ZPoiWNW8OEl4ejLMRBGztdX6nELrrtoy6QokZJZCdoEKDHJS8hNxOTiK3cazDtnNziNc_xhvEvs8ZHSzhlUD0CJEXxNdakt4SsVRpEO2QOCnljjea7tYiuTiqWL3YRaMacxpM6slPF5McPbVGHioABxTj-hDIttSABvCb1oNiRJb4FPNOP511pbQe0OeuN1wNDe8ZVqxJJ3WZJUGs7d54vPCy1hfCRCyNHK-9RiPxm3FHu4nSeolQyM8HmA3_09VHRGaRkfQawCyhkIgbqiGnetltQetLGaIyFikPnW-mTaBZrwKZez99CPYMUJyfV2ja3QjU9rXt9brxVgOciQRlzTwzYwWytUZym3-wj980oNxs0sf5c_KdOPSF2Hg0ujjSn0wNH29muhI6pTuiKOyb9NOL5rDDywwHEhRTLOWPF46WlSIv5qWgYstU7Sw5goF1lJYXgMV-914Utxy0Li2Af-AzVwFMo0TeQwbA-mzDm1XASarOB_caM0IPKi_1i_iJWYUyOA7C5NG_rL87vXzv7lYBzC16A7bUBGErcHg0-QoPLGX9vjGOUY69vunEkuQdEIWzsgtvfQMHpkP9ykboDScCw9t32dpfJlXpCNMOhgysCT3fOMUHM2Oe339kWI0-FGgMoBrLra8qHNnElsbO4DahkunLlxqHcqlpW63uq16hfdi9HGnhd5v7Gpmqdoy_Y4uFSnnqV9zo-AI3SLYse2hSwiXYgXpQUE7qYwaLAW8_Qk1rbKYHTwwERCD42_Q0pv-mtqj0bS4t0X4dZA6trMrPr1yTm_H5PiVBY6jMpAcueste7Dvnnr4_y2ZKI_2HkWm9h6eOJyCLm0IntauQLi6oUDIZk5utLJnn4s3DE86pNV4NzuCvWRCizlYP1LCtC26kZ7SXJs1Sn4tJbi2kvbKPfdfS5jmS77s-T4VLv9d_cbTCVbSwHBUIsN12_bxe7X-i0Uu6OcGeNUz651tvn4hFKUD91pAmHfSY291-YX4ZfSuYetiGWHn16Vxs5UiEC3hjOw4O_ZoUjMlZVvW3mng675zSoXhN2n-WaJVGkKZYSBz11vLWTJjz5F975FOVVNdVjqdvslJCATcqyiVAq4NYgumta42l8qZALTTYXRzTJM8YNm574g1D6qzW4LrG7IJp03Rucy-h7q70bOYli7oeER-bKfsCvqnbHyUPlnCzeDQHzGRdBQXTHWuNKDn5IRynVpmCTRa_Xn6LTk8gu7hf33SBaV4cOPyjrLS6jeBFj3O4iGxpbY-GDU8wGr4kjBqb_biiXddJBsNkLVdunABOtMyCD3Gr5Jvw_h-0ATDjBk9ModFuLd50wohXK_b8CBOPNy8JVZS67aIfJ8DAqyoU6RMhZHaOOYgim1t3TPV99ecoG4bjOnUdCdQ2DDv0ZvIBZ7jttlGm9CoJJsv1SN5jKuQLUs8kj6eR7gj2uh6Urq_MvLXvyfA2c3ULQZJ2OWQZpDcTNiNY0NNQt6zCJNIcJfLpB-M0Nq5JNEBnXcfsExGPLTRwUi5wq-KBs-4a9pBTQGub7OPFHqpPnTq52_Gm_sAbXKMmC4BQovi_eGZKti7RDFJLFXnEsyeLwZSYY6ZuZjxi-uSUQOEuW4X1hyyxYwXwUtORbIY783L5QqWB1S5skbom6QOfNEb5z05iFpTqb0ADWPacsl5enLW9qocMsf99bgmzR0ixc2H3uvZaDw6GKo3zSDdmCbfryjOnPFfkYIy21DrIbFGvUSXVWB2uxqJ7PZhBxxjnL1qwiIu8XX_GVlHs2Ga5x_TPzw2-tg9GVkTRvEv-BmYme_7YidBz8td655gTgNfAsT6hZQAHR82nQ6qYWBc5M5XLEv-M0oNVJv7ReUD89183HLqsxIZ_xrPfeLWHVjxeQVsTnigm7Mg50ThD3NHI6nCaUZQSi9UJd4RY2Cxtilp2Qz5BuePP5OKiOJOh1tgKV_70AEFeIp4z221-4SFS83M8FW7JDalQMjwY7A-1rE7zFGwNP7IlcCGB3HlGAevKoxTIBo1t9_enIrE9QO60MwV-CM5Ko3PoJe_vOlLcRUEc0LY1XyiKbF6st9B2zaj4PmoqIHv0CUltCBIWYH78Th3h94W_Jl6PY6MZbXdLfh35U4mRBe1aUgMwMXsYKQew6zM-O-r_m4zwBb9-e3yyh2m5ckLaZGaz3aqbtCa-A7SOCJOwTen5tLWC_KRb082sHH81umbqGFq6yacVM78r4dShDcuWMAmI5DDewcV9bAhuywf-x5OzFCiu7kRAPeG9nBaAJe3kd5-N_vkm9J24tPZur78hyJTVhAAuvxym56Xny2qsY4bLDvRl-3FDBkj9Zm2r5E6yS451m6Ou8ZuAmEb07l-t6F_H5GKTxYi_dGFcwfx9-hRhwGgZHqfSN0AwNJMhM6D8r7ksbTFxEeH1TuGQyFbh2kZKiix1Hek5YOJCR8nR9wCc3yPK-4nGbYsnPO4-qxuIeftUlFU-24gwA2L5PvLSiKR9AQXuif00HlxO75-fRI9ehuWIcWJ6GQRINVIk7CHvxthvpU1LCkn2gnwC3Ff5RezZ8oRCIJeVBps34p6ZlCGneyutu_oiWWnNCV51ZBu2r6IODKn6Sy382g5M-NB15Lospv3Sm7f6xJbY09MibMfw3mBBuOQZaLRJ9yhWsfzoBYtO8hmXslqqdeYDTgXStJ710KkzmbL3yHr0qwDTbukQSo-MZr117bvQwFhpxSy0HKZTzj8lEolrvVF_AFKDpS0gJZANRhMz0Y__gf28Y131upc5LhDeRu5QQuq1snpioY7ZAlQBQp6RzOXahQMGcyLEsg0lAncWtTn_RjQfP0g9eoqe6N94lCsXKkkZmHZhEXy5VowE7BcSyO1xprXenmxh3fgY_aj5kx2_GMj4kUDYZ6N9o061sA2CZWau-54jyNCJvS6GJ32Tp00_EYe9hw5MzDRsd5-R9edsyxGpwtFrzPdIa9Pgvg53rbfDZ8Exhn8_ZH4u4b__UcZKYTbExyeq3KaErLZ5r_-A-YJQU2DylmxR7z1HhgPMrQIeDgOzbuvTvGhHZQcp-A2paBaHMzLNkA-5okdxrfECPSjexmGKYRlU_2ExsnCdgV_RRbmkdlHYTWhPnkyqaf63D8Eopc0cLnOA-bhsooW6NyC_0Ff03SubxuQtkkJqruXWTIyfdIRc2nG5ivNIP3gXtrdAWWzn3vuONiP9DwvGfin5zjHLauSxkzpFcY769q-aLNEfg43IAhreys155RraAYREpGHWTPikrnWDqtTWT_7oLaO6KnVw-gnAfds-GgySPzZelbJQBs5hVKCIsLrBsnalKaBTac8TmUkZ_JCjgOTwuVgV-O2WMY4h8EOwsxOJGr4N1nGaiqZ89BWJQ3IYhSIUESKwGr_JIOQHX60SmtT7pMe0kyCayd5ImeM6weuezQL6I7RmolJJM7qO6-r24aD6Llc8WD8ME1oTeNI4uSpDb-gjcgRXnXp8cnARzKmfXSPoMK5R1LCDxlr1u0PtV9CSmQ50-v_-tVbR9k4_4_RmOOq7uECTJ1DtA1SMbMUxkQupq5AUijLrxcfX5R-ue8XMe3V08bZ4Dd_BwkNjMNqQvpPMOyLxHm0bkF_r50JMoKSg3dJbfRum6W4SJwFw8p0B-pCPG3BVM-GsPzChW0XKRfn71xngvCOJerPpKASrT5GrVCL4nf0wBcTZUqOXvF_3dL2nTwL_6KvSFLmP-km159-EgFm-cEfFwuUB4YMosEcXGuZ7UOYq_cWRTEzE33dOquoia1jh-tR3p6eNcLl6w9lu9Wd_bc5J5UlPMwhZedXhG-jdqp1jvtQLLuiBudOArtMwUek67aGSGi7en5xDtbMMtQeNibKTrk7xeSqWAlfX8HhwnfQ114sja9KtqxNa64w10aK280VScV8ityAvLhlYoHUEqawvqeTcmqqVwcVp3Ez3UqApBU3-gvFIfOfjECsNlSiue9bpFSMalnEXGjVqia-C3KdA2yufdXDfcDyxLX9UQM3KBo8rsyxXwh7xbuohBh9s5JjhGhZj4fxKykqs_EFgrwwJKKpzFNiDzoGuJKbx0n-2s4l1NTfR6VIMcam3HGGPTi7xfgwN81J7Ibe_ZngYcv-0LsluYVa1Lb_PxFKVhKZV_Vpk4Nh0Cg2J7q3rCrymuuCFH-FYD7GcX1vGH0OU3yVwVf_piKdCYl2BhD3xtKwGwE4aOb2gqiavbSpGm9SkUgaC7mWtfEr4pK4pxJ4BRVR3bYSPJC2VPpCU6ZDySt7f2GGgsVhkfg8En03fpHLM7pPBjuhbJwhMoosMPQAGo579HtE7iZTmMCfoWkpsYZT20Z8qtZDVy1tXJBn5yjfXRjTeRtnaCN_pc-yCP6dVLZEzayvsTTOzVQu7X878z8APDpAqFb1yzCXyvTlV2chpnkL3Xhnf06CgNCd58V18-iebYvvjSHxXrjEnkh47TDmod3l-M3h1ip5wKMCJ2dxahugaOQX9ZBLilVSHRSGsgplU8B2wWIm6b4dclRRrc3_L7hwotGlEXkmcp-kMiXHCwBrScQ6TaUKZSU5n3LYu8ho_OWQr1u-S_9JzGgeY2VTd8v1pinG1rA3zjZ_CTgowyR6JjAAG0IWH8xbHOa7oLYX8pDw8KRvUN73Vg77CQkuf00BGZsIrfw6M1cgrnFLQFrX5wjTTvXMSQNTXdt8N3GqTTNbuqB1q4y09M3j3a87dMmRn93hLpzo1mcCDw2DN4cn2M0wU3Y4FlfNMlIjizDdkabj9ik-yvS3boKj4kvUzhbAMrfNmLty6NyFcyF5r0shY2lgR-Co0iC1xyZz4IjGs-Kgb2mB_lWrFqgr2NyGw";
+
+      function base64urlDecode(s) {
+        s = s.replace(/-/g, "+").replace(/_/g, "/");
+        while (s.length % 4) s += "=";
+        return Uint8Array.from(atob(s), c => c.charCodeAt(0));
+      }
+
+      try {
+        const keyBuf = base64urlDecode(keyStr);
+        const raw = base64urlDecode(encData);
+
+        const iv = raw.slice(0, 12);
+        const tag = raw.slice(12, 28);
+        const ciphertext = raw.slice(28);
+
+        const combined = new Uint8Array(ciphertext.length + 16);
+        combined.set(ciphertext);
+        combined.set(tag, ciphertext.length);
+
+        const key = await crypto.subtle.importKey(
+          "raw", keyBuf, "AES-GCM", false, ["decrypt"]
+        );
+
+        const plain = await crypto.subtle.decrypt(
+          { name: "AES-GCM", iv }, key, combined
+        );
+
+        const { title, body } = JSON.parse(new TextDecoder().decode(plain));
+        document.getElementById("title").textContent = title;
+        const sanitized = new DOMParser().parseFromString(body, "text/html");
+        sanitized.querySelectorAll("script,iframe,object,embed,form").forEach(el => el.remove());
+        sanitized.querySelectorAll("[onload],[onerror],[onclick],[onmouseover]").forEach(el => {
+          for (const attr of [...el.attributes]) {
+            if (attr.name.startsWith("on")) el.removeAttribute(attr.name);
+          }
+        });
+        document.getElementById("body").innerHTML = sanitized.body.innerHTML;
+        document.getElementById("error").style.display = "none";
+        document.getElementById("content").style.display = "block";
+        document.title = title;
+      } catch {
+        // wrong key or tampered data — leave the error message visible
+      }
+    })();
+  </script>
+</body>
+</html>

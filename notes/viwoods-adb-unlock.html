@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bypassing ADB Restrictions on Viwoods AiPaper Reader (Firmware v1.4.0)</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; color: #1a1a1a; line-height: 1.7; }
+  .container { max-width: 820px; margin: 0 auto; padding: 32px 24px; }
+
+  header { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); color: #fff; padding: 40px 36px; border-radius: 12px; margin-bottom: 32px; }
+  header h1 { font-size: 26px; margin-bottom: 8px; line-height: 1.3; }
+  header .meta { color: #aaa; font-size: 13px; margin-top: 12px; }
+  header .meta span { margin-right: 16px; }
+
+  .toc { background: #fff; border-radius: 10px; padding: 24px 28px; margin-bottom: 28px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+  .toc h2 { font-size: 16px; margin-bottom: 12px; }
+  .toc ol { padding-left: 20px; }
+  .toc li { margin-bottom: 6px; }
+  .toc a { color: #2563eb; text-decoration: none; font-size: 14px; }
+  .toc a:hover { text-decoration: underline; }
+
+  section { background: #fff; border-radius: 10px; padding: 28px 32px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+  section h2 { font-size: 20px; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid #e5e7eb; }
+  section h3 { font-size: 16px; margin: 20px 0 10px; color: #374151; }
+  p { margin-bottom: 14px; font-size: 15px; }
+  ul, ol { margin-bottom: 14px; padding-left: 24px; }
+  li { margin-bottom: 6px; font-size: 15px; }
+
+  pre { background: #111827; color: #e5e7eb; padding: 16px 20px; border-radius: 8px; overflow-x: auto; margin: 14px 0; font-size: 13px; line-height: 1.6; }
+  code { font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace; }
+  p code, li code { background: #f3f4f6; color: #dc2626; padding: 2px 6px; border-radius: 4px; font-size: 13px; }
+
+  .callout { padding: 16px 20px; border-radius: 8px; margin: 16px 0; font-size: 14px; }
+  .callout-success { background: #ecfdf5; border-left: 4px solid #10b981; }
+  .callout-warning { background: #fffbeb; border-left: 4px solid #f59e0b; }
+  .callout-danger { background: #fef2f2; border-left: 4px solid #ef4444; }
+  .callout-info { background: #eff6ff; border-left: 4px solid #3b82f6; }
+  .callout strong { display: block; margin-bottom: 4px; }
+
+  .timeline { position: relative; padding-left: 28px; margin: 16px 0; }
+  .timeline::before { content: ''; position: absolute; left: 8px; top: 4px; bottom: 4px; width: 2px; background: #d1d5db; }
+  .timeline-item { position: relative; margin-bottom: 20px; }
+  .timeline-item::before { content: ''; position: absolute; left: -24px; top: 6px; width: 12px; height: 12px; border-radius: 50%; border: 2px solid #6b7280; background: #fff; }
+  .timeline-item.success::before { border-color: #10b981; background: #10b981; }
+  .timeline-item.fail::before { border-color: #ef4444; background: #ef4444; }
+  .timeline-item.key::before { border-color: #f59e0b; background: #f59e0b; }
+  .timeline-label { font-size: 12px; color: #6b7280; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+  .timeline-content { font-size: 14px; margin-top: 2px; }
+
+  table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+  th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid #e5e7eb; font-size: 14px; }
+  th { font-weight: 600; color: #6b7280; background: #f9fafb; }
+
+  .badge { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; }
+  .badge-green { background: #dcfce7; color: #166534; }
+  .badge-red { background: #fee2e2; color: #991b1b; }
+
+  .protocol-box { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px; padding: 16px; margin: 14px 0; font-family: monospace; font-size: 13px; }
+  .protocol-box .arrow-right { color: #2563eb; }
+  .protocol-box .arrow-left { color: #16a34a; }
+  .protocol-box .highlight { background: #fef08a; padding: 1px 4px; border-radius: 3px; }
+
+  .diagram { text-align: center; margin: 20px 0; }
+  .diagram pre { display: inline-block; text-align: left; background: #f9fafb; color: #1a1a1a; border: 1px solid #e5e7eb; }
+
+  footer { text-align: center; color: #9ca3af; font-size: 12px; padding: 24px 0; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>Bypassing ADB Restrictions on the Viwoods AiPaper Reader</h1>
+  <p style="color: #d1d5db; font-size: 15px; margin-top: 8px;">Reverse-engineering the firmware v1.4.0 ADB lockdown via protocol interception</p>
+  <div class="meta">
+    <span>Date: 2026-05-10</span>
+    <span>Device: Viwoods AiPaper Reader</span>
+    <span>Device: Viwoods AiPaper Reader</span>
+  </div>
+</header>
+
+<nav class="toc">
+  <h2>Table of Contents</h2>
+  <ol>
+    <li><a href="#background">Background</a></li>
+    <li><a href="#problem">The Problem,ADB Lockdown After Firmware Update</a></li>
+    <li><a href="#diagnosis">Diagnosis,What Still Works?</a></li>
+    <li><a href="#debug-tool">The Viwoods Debug Tool</a></li>
+    <li><a href="#interception">Protocol Interception,Setting the Trap</a></li>
+    <li><a href="#discovery">The Discovery,A Hardcoded Unlock Key</a></li>
+    <li><a href="#unlock">Permanent Unlock</a></li>
+    <li><a href="#verification">Verification,Everything Restored</a></li>
+    <li><a href="#technical">Technical Analysis</a></li>
+    <li><a href="#tldr">TL;DR,Quick Unlock Guide</a></li>
+  </ol>
+</nav>
+
+<!-- 1. BACKGROUND -->
+<section id="background">
+  <h2>1. Background</h2>
+  <p>The <strong>Viwoods AiPaper Reader</strong> is a 6.13" e-ink device running Android 16 on a MediaTek SoC (ARM big.LITTLE: 6x Cortex-A55 + 2x Cortex-A76). It ships with 4 GB RAM and 106 GB internal storage.</p>
+  <p>On firmware <strong>v1.3.4 and earlier</strong>, the device had:</p>
+  <ul>
+    <li>Full ADB shell access over USB and Wi-Fi</li>
+    <li>Factory root access via <code>/system/xbin/su</code> (no Magisk or SuperSU needed)</li>
+    <li>Working <code>adb push</code>, <code>adb pull</code>, <code>adb install</code>, <code>scrcpy</code>, and <code>logcat</code></li>
+    <li>Wireless ADB for cable-free file transfers</li>
+  </ul>
+  <p>This made the device a power user's dream,full control over an e-ink Android tablet.</p>
+</section>
+
+<!-- 2. THE PROBLEM -->
+<section id="problem">
+  <h2>2. The Problem,ADB Lockdown After Firmware Update</h2>
+  <p>After updating from firmware <strong>v1.3.4</strong> to <strong>v1.4.0</strong>, every ADB command began failing with a cryptic error:</p>
+  <pre>$ adb shell id
+error: not support command id
+
+$ adb shell ls
+error: not support command ls
+
+$ adb push file.txt /sdcard/
+error: not support command
+
+$ adb install app.apk
+Error: not support command</pre>
+
+  <p>The device was visible to ADB and reported as <code>device</code> (connected), but a custom restricted ADB daemon on the device rejected every command.</p>
+
+  <div class="callout callout-danger">
+    <strong>Impact:</strong>
+    The lockdown broke wireless file transfer workflows, blocked scrcpy screen mirroring, prevented app sideloading, and eliminated shell access entirely,despite the device still having factory root in <code>/system/xbin/su</code>.
+  </div>
+
+  <h3>What ADB reported</h3>
+  <pre>$ adb devices -l
+&lt;SERIAL&gt;  device usb:1-1 product:AiPaper Reader model:AiPaper_Reader
+
+$ adb get-state
+device
+
+$ adb features
+shell_v2, cmd, stat_v2, ls_v2, abb, abb_exec, remount_shell, ...</pre>
+  <p>The device advertised full feature support including <code>shell_v2</code>,it just refused to execute anything.</p>
+</section>
+
+<!-- 3. DIAGNOSIS -->
+<section id="diagnosis">
+  <h2>3. Diagnosis,What Still Works?</h2>
+  <p>Systematic testing revealed the extent of the lockdown:</p>
+  <table>
+    <tr><th>Command</th><th>Status</th><th>Notes</th></tr>
+    <tr><td><code>adb devices</code></td><td><span class="badge badge-green">Working</span></td><td>Device detected normally</td></tr>
+    <tr><td><code>adb get-state</code></td><td><span class="badge badge-green">Working</span></td><td>Returns "device"</td></tr>
+    <tr><td><code>adb get-serialno</code></td><td><span class="badge badge-green">Working</span></td><td>Returns serial number</td></tr>
+    <tr><td><code>adb features</code></td><td><span class="badge badge-green">Working</span></td><td>Full feature list returned</td></tr>
+    <tr><td><code>adb forward</code></td><td><span class="badge badge-green">Working</span></td><td>Port forwarding works</td></tr>
+    <tr><td><code>adb shell *</code></td><td><span class="badge badge-red">Blocked</span></td><td>"not support command"</td></tr>
+    <tr><td><code>adb push/pull</code></td><td><span class="badge badge-red">Blocked</span></td><td>Protocol fault</td></tr>
+    <tr><td><code>adb install</code></td><td><span class="badge badge-red">Blocked</span></td><td>"not support command"</td></tr>
+    <tr><td><code>adb logcat</code></td><td><span class="badge badge-red">Blocked</span></td><td>"not support command"</td></tr>
+    <tr><td><code>adb screencap</code></td><td><span class="badge badge-red">Blocked</span></td><td>"not support command"</td></tr>
+    <tr><td><code>scrcpy</code></td><td><span class="badge badge-red">Blocked</span></td><td>Can't push server binary</td></tr>
+  </table>
+  <p>The restriction was at the device's ADB daemon level,the host-side ADB client and server functioned normally, but the device-side daemon rejected all shell and file transfer operations.</p>
+</section>
+
+<!-- 4. DEBUG TOOL -->
+<section id="debug-tool">
+  <h2>4. The Viwoods Debug Tool</h2>
+  <p>Online research revealed that Viwoods had <strong>intentionally disabled ADB</strong> and provided a proprietary <strong>Viwoods Debug Tool</strong> as a workaround to select users. A community member shared the tool: <code>viwoods-debug-tools-20260206.zip</code> (135 MB).</p>
+
+  <h3>Tool Contents</h3>
+  <pre>viwoods-debug-tools-20260206/
+├── Viwoods Debug Tool user guide.pdf    (1.4 MB)
+├── viwoods_debug_tools-linux.zip        (45.7 MB)
+├── viwoods_debug_tools-macOS.zip        (47.9 MB)
+└── viwoods_debug_tools-win.zip          (47.4 MB)</pre>
+
+  <p>The tool is a .NET Avalonia desktop app (self-contained AOT binary) that bundles its own ADB binary and provides:</p>
+  <ul>
+    <li>Device detection and connection management</li>
+    <li>Logcat capture (start/stop/export/clear)</li>
+    <li>Performance log export (battery, power, wakeup)</li>
+    <li>System crash log capture</li>
+    <li>A <strong>"Custom Command"</strong> input box for arbitrary ADB commands</li>
+  </ul>
+
+  <h3>The Key Observation</h3>
+  <p>The Custom Command box in the tool <strong>successfully executed shell commands</strong> that standard ADB could not:</p>
+  <pre>09:45:51 - Executeing: shell getprop ro.build.version.release
+09:45:52 - 16
+
+09:44:44 - Executeing: shell su 0 id
+09:44:44 - uid=0(root) ...</pre>
+
+  <div class="callout callout-info">
+    <strong>Critical question:</strong>
+    The tool bundles the same ADB binary (v36.0.0) and connects to the same ADB server on port 5037. If the ADB binary is the same, how does the tool bypass the restriction?
+  </div>
+</section>
+
+<!-- 5. INTERCEPTION -->
+<section id="interception">
+  <h2>5. Protocol Interception,Setting the Trap</h2>
+  <p>To understand how the tool bypassed the restriction, we intercepted the ADB protocol traffic between the tool and the ADB server using a TCP proxy.</p>
+
+  <h3>Step 1: Move the real ADB server</h3>
+  <p>The ADB server normally listens on <code>localhost:5037</code>. We restarted it on port 6037:</p>
+  <pre>$ adb kill-server
+$ ANDROID_ADB_SERVER_PORT=6037 adb start-server
+* daemon started successfully</pre>
+
+  <h3>Step 2: Insert a logging proxy on port 5037</h3>
+  <p>A Python TCP proxy was placed on port 5037 to intercept all traffic and forward it to the real server on 6037:</p>
+  <pre>import socket, threading
+
+def forward(src, dst, label):
+    while True:
+        data = src.recv(4096)
+        if not data: break
+        LOG.write(f'{label}: {data!r}\n')
+        dst.sendall(data)
+
+# Proxy on :5037 → :6037
+server.bind(('127.0.0.1', 5037))
+# ... accept and forward connections</pre>
+
+  <div class="diagram">
+    <pre>
+  ┌──────────────────┐     ┌──────────────┐     ┌────────────┐     ┌──────────┐
+  │  Viwoods Debug   │────▶│  TCP Proxy   │────▶│ ADB Server │────▶│  Device  │
+  │      Tool        │◀────│  (port 5037) │◀────│ (port 6037)│◀────│          │
+  └──────────────────┘     └──────┬───────┘     └────────────┘     └──────────┘
+                                  │
+                            ┌─────▼─────┐
+                            │  Log File  │
+                            │ (capture)  │
+                            └───────────┘
+    </pre>
+  </div>
+
+  <h3>Step 3: Capture a normal (failing) command</h3>
+  <p>First, we captured what standard <code>adb shell id</code> sends:</p>
+  <div class="protocol-box">
+    <span class="arrow-right">C→S:</span> <code>host:version</code><br>
+    <span class="arrow-left">S→C:</span> <code>OKAY 0029</code><br>
+    <span class="arrow-right">C→S:</span> <code>host-serial:&lt;SERIAL&gt;:features</code><br>
+    <span class="arrow-left">S→C:</span> <code>OKAY shell_v2,cmd,stat_v2,...</code><br>
+    <span class="arrow-right">C→S:</span> <code>host:tport:serial:&lt;SERIAL&gt;</code><br>
+    <span class="arrow-left">S→C:</span> <code>OKAY</code><br>
+    <span class="arrow-right">C→S:</span> <code>shell,v2,TERM=xterm-256color,raw:id</code><br>
+    <span class="arrow-left">S→C:</span> <code><span class="highlight">error: not support command id</span></code>
+  </div>
+
+  <h3>Step 4: Capture the Viwoods tool's command</h3>
+  <p>Then the same <code>shell id</code> was executed through the Viwoods Debug Tool:</p>
+  <div class="protocol-box">
+    <span class="arrow-right">C→S:</span> <code>host:version</code><br>
+    <span class="arrow-left">S→C:</span> <code>OKAY 0029</code><br>
+    <span class="arrow-right">C→S:</span> <code>host-serial:&lt;SERIAL&gt;:features</code><br>
+    <span class="arrow-left">S→C:</span> <code>OKAY shell_v2,cmd,...</code><br>
+    <span class="arrow-right">C→S:</span> <code>host:tport:serial:&lt;SERIAL&gt;</code><br>
+    <span class="arrow-left">S→C:</span> <code>OKAY</code><br>
+    <span class="arrow-right">C→S:</span> <code>shell,v2,TERM=xterm-256color,raw:<span class="highlight">setprop persist.wisky.hold_enable_adb SE03znbjb@6932</span></code><br>
+    <span class="arrow-left">S→C:</span> <code>OKAY</code> (exit code 0)<br>
+    <br>
+    <em style="color: #6b7280;">ADB is now unlocked, tool sends the actual command</em><br>
+    <br>
+    <span class="arrow-right">C→S:</span> <code>shell,v2,TERM=xterm-256color,raw:id</code><br>
+    <span class="arrow-left">S→C:</span> <code>OKAY uid=2000(shell) gid=2000(shell) ...</code><br>
+    <br>
+    <em style="color: #6b7280;">After command completes, tool re-locks ADB</em><br>
+    <br>
+    <span class="arrow-right">C→S:</span> <code>shell,v2,TERM=xterm-256color,raw:<span class="highlight">setprop persist.wisky.hold_enable_adb ' '</span></code><br>
+    <span class="arrow-left">S→C:</span> <code>OKAY</code> (exit code 0)
+  </div>
+</section>
+
+<!-- 6. DISCOVERY -->
+<section id="discovery">
+  <h2>6. The Discovery,A Hardcoded Unlock Key</h2>
+  <p>The Viwoods Debug Tool's strategy is simple:</p>
+
+  <div class="timeline">
+    <div class="timeline-item key">
+      <div class="timeline-label">Before each command</div>
+      <div class="timeline-content">Set the system property <code>persist.wisky.hold_enable_adb</code> to the unlock key <code>SE03znbjb@6932</code></div>
+    </div>
+    <div class="timeline-item success">
+      <div class="timeline-label">Execute command</div>
+      <div class="timeline-content">Run the actual ADB shell command,now succeeds because the property gate is satisfied</div>
+    </div>
+    <div class="timeline-item fail">
+      <div class="timeline-label">After each command</div>
+      <div class="timeline-content">Clear the property by setting it to <code>' '</code> (a single space),re-locking ADB</div>
+    </div>
+  </div>
+
+  <h3>How the device-side restriction works</h3>
+  <p>The custom ADB daemon on the device checks the value of <code>persist.wisky.hold_enable_adb</code> before executing any shell command. If the value matches the hardcoded key <code>SE03znbjb@6932</code>, the command is allowed. Otherwise, it returns <code>error: not support command</code>.</p>
+
+  <div class="callout callout-warning">
+    <strong>Note on "wisky":</strong>
+    The property name contains <code>wisky</code>, suggesting Viwoods uses Wisky Technology as their ODM (Original Design Manufacturer) for the hardware/firmware base. This is a common arrangement in the Chinese e-ink device market.
+  </div>
+
+  <h3>Security implications</h3>
+  <p>The restriction is <strong>security through obscurity</strong>,the unlock key is hardcoded and transmitted in plaintext over the ADB protocol. Anyone with the ability to intercept localhost TCP traffic (which requires no special privileges) can extract the key.</p>
+  <p>Notably, the <code>setprop</code> command itself is <em>not</em> blocked by the restriction,only the subsequent shell commands are gated. This means the unlock property can be set even when ADB is in its "locked" state.</p>
+</section>
+
+<!-- 7. PERMANENT UNLOCK -->
+<section id="unlock">
+  <h2>7. Permanent Unlock</h2>
+  <p>Since the property uses the <code>persist.</code> prefix, setting it once makes it survive reboots,it's written to <code>/data/property/persistent_properties</code> on the device.</p>
+
+  <pre>$ adb shell "setprop persist.wisky.hold_enable_adb SE03znbjb@6932"
+
+$ adb shell id
+uid=2000(shell) gid=2000(shell) groups=2000(shell),1004(input),1007(log),
+1011(adb),1015(sdcard_rw),1028(sdcard_r),... context=u:r:shell:s0
+
+$ adb shell su 0 id
+uid=0(root) gid=0(root) groups=0(root),... context=u:r:su:s0</pre>
+
+  <div class="callout callout-success">
+    <strong>One command is all it takes:</strong>
+    <code>adb shell "setprop persist.wisky.hold_enable_adb SE03znbjb@6932"</code>,this permanently unlocks full ADB access including shell, push, pull, install, logcat, screencap, and scrcpy. The setting survives reboots.
+  </div>
+
+  <div class="callout callout-warning">
+    <strong>Caveat:</strong>
+    The Viwoods Debug Tool re-locks ADB after each command by clearing the property. If you use the tool after unlocking, you'll need to run the unlock command again. Avoid using the Debug Tool once unlocked.
+  </div>
+</section>
+
+<!-- 8. VERIFICATION -->
+<section id="verification">
+  <h2>8. Verification,Everything Restored</h2>
+
+  <h3>USB ADB</h3>
+  <pre>$ adb -s &lt;SERIAL&gt; shell id
+uid=2000(shell) gid=2000(shell) ...  ✓
+
+$ adb -s &lt;SERIAL&gt; shell su 0 id
+uid=0(root) gid=0(root) ...  ✓
+
+$ adb push test.txt /sdcard/
+1 file pushed. 0.1 MB/s  ✓</pre>
+
+  <h3>Wireless ADB</h3>
+  <pre>$ adb tcpip 5555
+restarting in TCP mode port: 5555
+
+$ adb connect &lt;DEVICE_IP&gt;:5555
+connected to &lt;DEVICE_IP&gt;:5555
+
+$ adb -s &lt;DEVICE_IP&gt;:5555 shell id
+uid=2000(shell) gid=2000(shell) ...  ✓
+
+$ adb -s &lt;DEVICE_IP&gt;:5555 push test.txt /sdcard/
+1 file pushed.  ✓</pre>
+
+  <h3>Full capability matrix after unlock</h3>
+  <table>
+    <tr><th>Capability</th><th>Before Unlock</th><th>After Unlock</th></tr>
+    <tr><td>ADB shell</td><td><span class="badge badge-red">Blocked</span></td><td><span class="badge badge-green">Working</span></td></tr>
+    <tr><td>Root (su)</td><td><span class="badge badge-red">Blocked</span></td><td><span class="badge badge-green">Working</span></td></tr>
+    <tr><td>adb push / pull</td><td><span class="badge badge-red">Blocked</span></td><td><span class="badge badge-green">Working</span></td></tr>
+    <tr><td>adb install</td><td><span class="badge badge-red">Blocked</span></td><td><span class="badge badge-green">Working</span></td></tr>
+    <tr><td>logcat</td><td><span class="badge badge-red">Blocked</span></td><td><span class="badge badge-green">Working</span></td></tr>
+    <tr><td>screencap</td><td><span class="badge badge-red">Blocked</span></td><td><span class="badge badge-green">Working</span></td></tr>
+    <tr><td>scrcpy</td><td><span class="badge badge-red">Blocked</span></td><td><span class="badge badge-green">Working</span></td></tr>
+    <tr><td>Wireless ADB</td><td><span class="badge badge-red">Blocked</span></td><td><span class="badge badge-green">Working</span></td></tr>
+    <tr><td>Wireless file transfer</td><td><span class="badge badge-red">Blocked</span></td><td><span class="badge badge-green">Working</span></td></tr>
+  </table>
+</section>
+
+<!-- 9. TECHNICAL -->
+<section id="technical">
+  <h2>9. Technical Analysis</h2>
+
+  <h3>Device specifications</h3>
+  <table>
+    <tr><th>Property</th><th>Value</th></tr>
+    <tr><td>Device</td><td>Viwoods AiPaper Reader</td></tr>
+    <tr><td>Android Version</td><td>16</td></tr>
+    <tr><td>Firmware</td><td>1.4.0</td></tr>
+    <tr><td>Chipset</td><td>MediaTek (0x0e8d)</td></tr>
+    <tr><td>CPU</td><td>8-core ARMv8: 6x Cortex-A55 (0xD05) + 2x Cortex-A76 (0xD0B)</td></tr>
+    <tr><td>RAM</td><td>3.66 GB</td></tr>
+    <tr><td>Storage</td><td>106 GB (dm-verity protected system partitions)</td></tr>
+    <tr><td>Battery</td><td>~2,503 mAh Li-ion</td></tr>
+    <tr><td>Root method</td><td>Factory <code>su</code> binary at <code>/system/xbin/su</code> (setuid root)</td></tr>
+    <tr><td>ODM</td><td>Wisky Technology (inferred from <code>persist.wisky.*</code> properties)</td></tr>
+  </table>
+
+  <h3>Firmware version history</h3>
+  <table>
+    <tr><th>Version</th><th>Date</th><th>ADB Status</th><th>Notes</th></tr>
+    <tr><td>1.0.7</td><td>~2025-09</td><td><span class="badge badge-green">Full access</span></td><td>Factory firmware</td></tr>
+    <tr><td>1.1.0</td><td>~2025-12</td><td><span class="badge badge-green">Full access</span></td><td>First OTA update</td></tr>
+    <tr><td>1.2.3</td><td>~2026-01</td><td><span class="badge badge-green">Full access</span></td><td>Review firmware</td></tr>
+    <tr><td>1.3.4</td><td>~2026-02</td><td><span class="badge badge-red">Restricted</span></td><td>ADB lockdown introduced</td></tr>
+    <tr><td>1.3.8</td><td>~2026-03</td><td><span class="badge badge-red">Restricted</span></td><td>Beta release</td></tr>
+    <tr><td>1.4.0</td><td>~2026-05</td><td><span class="badge badge-red">Restricted</span></td><td>Current; fully locked</td></tr>
+  </table>
+
+  <h3>The restriction mechanism</h3>
+  <p>The ADB daemon on the device has been modified to check a system property before allowing shell command execution:</p>
+  <pre>// Pseudocode of the device-side ADB restriction
+if (getprop("persist.wisky.hold_enable_adb") != "SE03znbjb@6932") {
+    return "error: not support command " + cmd;
+}
+// else: proceed with normal shell execution</pre>
+
+  <p>Key observations:</p>
+  <ul>
+    <li>The <code>setprop</code> command itself is exempted from the restriction,otherwise the unlock would be impossible</li>
+    <li>The key <code>SE03znbjb@6932</code> appears to be a randomly generated string, not derived from any device-specific value</li>
+    <li>The same key likely works on all Viwoods/Wisky devices running firmware v1.3.4+</li>
+    <li>The <code>persist.</code> prefix means the property is stored in <code>/data/property/persistent_properties</code> and survives reboots</li>
+    <li>ADB host-side operations (device listing, feature queries, port forwarding) are not affected by the restriction</li>
+  </ul>
+
+  <h3>Viwoods Debug Tool internals</h3>
+  <table>
+    <tr><th>Property</th><th>Value</th></tr>
+    <tr><td>Framework</td><td>.NET (Avalonia UI),self-contained AOT binary</td></tr>
+    <tr><td>Libraries</td><td>libAvaloniaNative.dylib, libSkiaSharp.dylib, libHarfBuzzSharp.dylib</td></tr>
+    <tr><td>Bundled ADB</td><td>v36.0.0 (same as standard platform-tools)</td></tr>
+    <tr><td>Binary size</td><td>~86 MB (macOS arm64)</td></tr>
+    <tr><td>Tool version</td><td>1.0.1 (2026-02-06)</td></tr>
+    <tr><td>Communication</td><td>Standard ADB protocol via localhost:5037</td></tr>
+    <tr><td>Unlock method</td><td>Sends <code>setprop</code> before each command, clears after</td></tr>
+  </table>
+</section>
+
+<!-- 10. TL;DR -->
+<section id="tldr">
+  <h2>10. TL;DR,Quick Unlock Guide</h2>
+
+  <div class="callout callout-success">
+    <strong>One-time permanent unlock:</strong>
+    <pre style="margin: 8px 0 0; background: #065f46; color: #d1fae5;">adb shell "setprop persist.wisky.hold_enable_adb SE03znbjb@6932"</pre>
+  </div>
+
+  <p>That's it. Run this once and you have full, persistent ADB access,shell, root, push, pull, install, scrcpy, wireless ADB, everything. Survives reboots.</p>
+
+  <h3>If you also want persistent wireless ADB:</h3>
+  <pre>adb shell "setprop persist.wisky.hold_enable_adb SE03znbjb@6932"
+adb shell "su 0 setprop persist.adb.tcp.port 5555"
+adb tcpip 5555
+adb connect &lt;device-ip&gt;:5555</pre>
+
+  <h3>To verify it worked:</h3>
+  <pre>$ adb shell getprop persist.wisky.hold_enable_adb
+SE03znbjb@6932
+
+$ adb shell id
+uid=2000(shell) ...
+
+$ adb shell su 0 id
+uid=0(root) ...</pre>
+
+  <h3>If ADB gets re-locked (e.g., after using the Viwoods Debug Tool):</h3>
+  <p>Just run the unlock command again,it's the same single command.</p>
+</section>
+
+<footer>
+  <p><a href="https://bensarmiento.com/" style="color: #9ca3af; text-decoration: none;">bensarmiento.com</a></p>
+</footer>
+
+</div>
+</body>
+</html>

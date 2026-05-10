@@ -61,8 +61,7 @@ const content = fs.readFileSync(contentFile, "utf8");
 const template = fs.readFileSync(TEMPLATE_PATH, "utf8");
 
 const key = crypto.randomBytes(32);
-const payload = JSON.stringify({ title, body: content });
-const { iv, encrypted, tag } = encrypt(payload, key);
+const { iv, encrypted, tag } = encrypt(content, key);
 
 const encryptedData = base64urlEncode(
   Buffer.concat([iv, tag, encrypted])

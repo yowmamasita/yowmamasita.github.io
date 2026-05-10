@@ -4,47 +4,19 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
-  <title>{{PAGE_TITLE}}</title>
+  <title>Private Note</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, sans-serif;
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 2rem 1rem;
-      color: #333;
-      line-height: 1.7;
-    }
-    #error {
-      text-align: center;
-      padding: 4rem 1rem;
+      font-family: system-ui, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 80vh;
       color: #999;
+      text-align: center;
     }
     #error h1 { font-size: 1.3rem; margin-bottom: 0.5rem; }
     #error p { font-size: 0.95rem; }
-    #content { display: none; }
-    #content h1 {
-      font-size: 1.6rem;
-      margin-bottom: 0.3rem;
-      color: #111;
-    }
-    #content .meta {
-      color: #999;
-      font-size: 0.85rem;
-      margin-bottom: 1.5rem;
-    }
-    #content .body { font-size: 1.05rem; }
-    #content .body p { margin-bottom: 1rem; }
-    #content .body img { max-width: 100%; height: auto; }
-    #content .body a { color: #4a7baa; }
-    footer {
-      margin-top: 3rem;
-      padding-top: 1rem;
-      border-top: 1px solid #eee;
-      font-size: 0.8rem;
-      color: #bbb;
-      text-align: center;
-    }
   </style>
 </head>
 <body>
@@ -52,11 +24,6 @@
     <h1>This note requires a valid link</h1>
     <p>Ask the person who shared it for the full URL.</p>
   </div>
-  <div id="content">
-    <h1 id="title"></h1>
-    <div class="body" id="body"></div>
-  </div>
-  <footer>Private family note &mdash; not for public distribution</footer>
 
   <script>
     (async function () {
@@ -91,19 +58,10 @@
           { name: "AES-GCM", iv }, key, combined
         );
 
-        const { title, body } = JSON.parse(new TextDecoder().decode(plain));
-        document.getElementById("title").textContent = title;
-        const sanitized = new DOMParser().parseFromString(body, "text/html");
-        sanitized.querySelectorAll("script,iframe,object,embed,form").forEach(el => el.remove());
-        sanitized.querySelectorAll("[onload],[onerror],[onclick],[onmouseover]").forEach(el => {
-          for (const attr of [...el.attributes]) {
-            if (attr.name.startsWith("on")) el.removeAttribute(attr.name);
-          }
-        });
-        document.getElementById("body").innerHTML = sanitized.body.innerHTML;
-        document.getElementById("error").style.display = "none";
-        document.getElementById("content").style.display = "block";
-        document.title = title;
+        const html = new TextDecoder().decode(plain);
+        document.open();
+        document.write(html);
+        document.close();
       } catch {
         // wrong key or tampered data — leave the error message visible
       }

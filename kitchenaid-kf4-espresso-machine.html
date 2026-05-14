@@ -83,6 +83,17 @@
   .cb-best { background: var(--green); color: #111; }
   .cb-good { background: var(--accent3); color: #111; }
   .cb-avg { background: var(--yellow); color: #111; }
+
+  .review-card { background: var(--bg-card); border-radius: 8px; padding: 1.4rem; margin: 1rem 0; border-left: 4px solid var(--accent3); }
+  .review-card .review-source { font-weight: 700; color: #fff; font-size: 1.05rem; margin-bottom: 0.2rem; }
+  .review-card .review-type { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.6rem; }
+  .review-card .review-quote { font-style: italic; color: var(--accent3); border-left: 2px solid var(--accent3); padding-left: 0.8rem; margin: 0.6rem 0; }
+  .review-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
+  @media (max-width: 750px) { .review-grid { grid-template-columns: 1fr; } }
+  .review-status { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.72rem; font-weight: 600; }
+  .rs-tested { background: var(--green); color: #111; }
+  .rs-preview { background: var(--yellow); color: #111; }
+  .rs-coverage { background: var(--accent2); color: var(--accent3); border: 1px solid var(--accent3); }
 </style>
 </head>
 <body>
@@ -112,6 +123,7 @@
     <li><a href="#features">Key Features Deep Dive</a></li>
     <li><a href="#lineup">KF2 vs KF3 vs KF4 Comparison</a></li>
     <li><a href="#proscons">Pros & Cons</a></li>
+    <li><a href="#reviews">Third-Party Reviews</a></li>
     <li><a href="#competitors">Competitive Landscape ($1,000–$1,500)</a></li>
     <li><a href="#verdict">Verdict & Recommendation</a></li>
     <li><a href="#journey">Research Journey</a></li>
@@ -306,8 +318,120 @@
   </div>
 </div>
 
+<!-- Third-Party Reviews -->
+<h2 id="reviews">5. Third-Party Reviews</h2>
+
+<div class="callout">
+  <div class="callout-title">Review Landscape Note</div>
+  <p>The KF4 launched on May 4, 2026 — just 11 days before this report. Only <strong>3 outlets</strong> have published hands-on tested reviews. Most coverage is launch announcements based on the press release. No user reviews or forum discussions exist yet.</p>
+</div>
+
+<h3>Hands-On Tested Reviews</h3>
+
+<div class="review-card">
+  <div class="review-source"><a href="https://www.coffeeness.de/en/kitchenaid-fully-automatic-espresso-machine-review/">Coffeeness</a> <span class="review-status rs-tested">Hands-On Tested</span></div>
+  <div class="review-type">Independent coffee review site (German, English edition) — most thorough review available</div>
+  <p class="review-quote">"Sweet, chocolatey and complex espresso" after dialing in grinder settings with medium roast beans.</p>
+  <p><strong>Verdict:</strong> "Highly recommended." Praised excellent build quality (durable stainless steel), intuitive touchscreen, exceptionally quiet operation, and 20 specialty drink options. Noted the machine requires several brew cycles to optimize settings.</p>
+  <div class="pros-cons" style="margin-top:0.8rem;">
+    <div class="pros" style="padding:0.8rem;">
+      <h3 style="font-size:0.9rem;">Highlights</h3>
+      <ul style="font-size:0.88rem;">
+        <li>Excellent build quality</li>
+        <li>Sweet, complex espresso</li>
+        <li>One of the quietest super-automatics</li>
+        <li>Easy-to-use touchscreen</li>
+        <li>Removable components simplify cleaning</li>
+      </ul>
+    </div>
+    <div class="cons" style="padding:0.8rem;">
+      <h3 style="font-size:0.9rem;">Criticisms</h3>
+      <ul style="font-size:0.88rem;">
+        <li>Cannot froth non-dairy milk alternatives</li>
+        <li>Milk foam quality trails DeLonghi &amp; Jura</li>
+        <li>"Rather pricey" at MSRP</li>
+        <li>Large countertop footprint</li>
+        <li>Learning curve to dial in grinder</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="review-card">
+  <div class="review-source"><a href="https://www.thekitchn.com/kitchenaid-fully-automatic-espresso-machine-with-iced-coffee-review-23781713">The Kitchn</a> (syndicated via <a href="https://shopping.yahoo.com/home-garden/kitchen/articles/tried-kitchenaid-compact-espresso-machine-194500875.html">Yahoo Shopping</a> / AOL) <span class="review-status rs-tested">Hands-On Tested</span></div>
+  <div class="review-type">Lifestyle/food publication — tested KF4 model pre-launch</div>
+  <p class="review-quote">"I'm never paying for a $7 latte again."</p>
+  <p class="review-quote">"Frothy, bold, and totally caf&eacute;-quality."</p>
+  <p><strong>Verdict:</strong> Very positive. Praised the clear touchscreen UI, extensive drink customization (strength, volume, body, temperature, milk volume), and the dual hot/iced coffee capability as a "brand first." Described the experience as feeling "like I'm in my own little coffee shop."</p>
+  <div class="pros-cons" style="margin-top:0.8rem;">
+    <div class="pros" style="padding:0.8rem;">
+      <h3 style="font-size:0.9rem;">Highlights</h3>
+      <ul style="font-size:0.88rem;">
+        <li>Caf&eacute;-quality drinks at home</li>
+        <li>Clear, easy-to-use touchscreen</li>
+        <li>Dual hot &amp; iced coffee modes</li>
+        <li>20+ customizable presets</li>
+        <li>Compact 25% size reduction</li>
+      </ul>
+    </div>
+    <div class="cons" style="padding:0.8rem;">
+      <h3 style="font-size:0.9rem;">Criticisms</h3>
+      <ul style="font-size:0.88rem;">
+        <li>Self-rinse on power on/off requires cup positioned to catch water</li>
+        <li>$1,300 is a significant investment</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="review-card">
+  <div class="review-source"><a href="https://coffeekev.com/kitchenaid-espresso-machine/">CoffeeKev</a> <span class="review-status rs-tested">Hands-On Tested</span></div>
+  <div class="review-type">Independent coffee blogger — "Hands-On 2026 Review"</div>
+  <p><strong>Verdict:</strong> Site returned 403 when fetching full content. Title suggests a positive hands-on review. Listed among top espresso machine reviews for 2026.</p>
+</div>
+
+<h3>First-Look / Launch Coverage (Not Hands-On)</h3>
+
+<div class="review-grid">
+  <div class="review-card">
+    <div class="review-source"><a href="https://www.homesandgardens.com/kitchens/appliances/kitchenaids-new-compact-espresso-machine">Homes &amp; Gardens</a> <span class="review-status rs-preview">First Look</span></div>
+    <div class="review-type">Home/lifestyle publication</div>
+    <p>Preview focused on the KF2 model. Referenced their earlier 4.5/5 review of the KF6, praising "exceptionally quiet operation" and design that "sits seamlessly in any modern kitchen." Expressed anticipation to test the new compact lineup.</p>
+  </div>
+  <div class="review-card">
+    <div class="review-source"><a href="https://www.techradar.com/home/coffee-machines/kitchenaid-puts-iced-coffee-lovers-first-with-its-new-lineup-of-automatic-espresso-machines-heres-when-youll-be-able-snag-one">TechRadar</a> <span class="review-status rs-coverage">Launch Coverage</span></div>
+    <div class="review-type">Tech publication</div>
+    <p>Announcement coverage highlighting the iced coffee focus, 25% size reduction, and Quiet Mark certification. No hands-on impressions.</p>
+  </div>
+  <div class="review-card">
+    <div class="review-source"><a href="https://www.homecrux.com/kitchenaid-kf2-kf3-kf4-fully-automatic-espresso-machines-launch/378345/">Homecrux</a> <span class="review-status rs-coverage">Launch Coverage</span></div>
+    <div class="review-type">Design/home publication</div>
+    <p>Detailed KF2/KF3/KF4 comparison. Highlighted AutoMilk System differentiation and the iced coffee brewing temperature approach.</p>
+  </div>
+  <div class="review-card">
+    <div class="review-source"><a href="https://coffeegeography.com/2026/04/15/kitchenaid-unveils-quiet-compact-fully-automatic-espresso-machines-built-to-perfect-iced-coffee-at-home/">Coffee Geography</a> <span class="review-status rs-coverage">Launch Coverage</span></div>
+    <div class="review-type">Coffee industry magazine</div>
+    <p>Pre-launch coverage (April 15). Emphasized "variety, performance and quiet operation" claims. No independent testing or original insights beyond manufacturer materials.</p>
+  </div>
+  <div class="review-card">
+    <div class="review-source"><a href="https://geardiary.com/2026/05/04/kitchenaid-fully-automatic-espresso-machines/">Gear Diary</a> <span class="review-status rs-coverage">Launch Coverage</span></div>
+    <div class="review-type">Tech/gadget blog</div>
+    <p>Launch-day coverage. Full content inaccessible (403). Title: "Want to Make Your Coffee Shop Habit Look Excessive."</p>
+  </div>
+  <div class="review-card">
+    <div class="review-source"><a href="https://vitamagazine.com/2026/05/01/kitchenaid-just-solved-the-iced-coffee-problem-meet-the-espresso-machines-built-for-summer/">VITA Daily</a> <span class="review-status rs-coverage">Launch Coverage</span></div>
+    <div class="review-type">Lifestyle magazine</div>
+    <p>Pre-launch coverage (May 1). Full content inaccessible (403). Title: "KitchenAid Just Solved The Iced Coffee Problem."</p>
+  </div>
+</div>
+
+<div class="callout callout-warn">
+  <div class="callout-title">User Reviews: None Yet</div>
+  <p>No user reviews exist on retail sites (KitchenAid.com, Williams Sonoma, Amazon). Reddit was inaccessible via search crawler. No coffee forum discussions (e.g., Home-Barista, CoffeeForums) were found. The machine is simply too new — expect meaningful user feedback to appear in June–July 2026.</p>
+</div>
+
 <!-- Competitors -->
-<h2 id="competitors">5. Competitive Landscape ($1,000–$1,500)</h2>
+<h2 id="competitors">6. Competitive Landscape ($1,000–$1,500)</h2>
 
 <table>
   <tr>
@@ -373,7 +497,7 @@
 </div>
 
 <!-- Verdict -->
-<h2 id="verdict">6. Verdict & Recommendation</h2>
+<h2 id="verdict">7. Verdict & Recommendation</h2>
 
 <div class="verdict-box">
   <div class="score">7.5 / 10</div>
@@ -401,7 +525,7 @@
 </ul>
 
 <!-- Research Journey -->
-<h2 id="journey">7. Research Journey</h2>
+<h2 id="journey">8. Research Journey</h2>
 
 <div class="journey">
   <ol>
@@ -419,11 +543,23 @@
     <li><strong>WebFetch: Coffeeness best super-automatics 2026</strong> — Verified competitive positioning and pricing.</li>
     <li><strong>The Kitchn and TechRadar</strong> — returned 403/empty content (bot blocking). Williams Sonoma also 403. KitchenAid.com timed out.</li>
   </ol>
-  <p style="margin-top:0.8rem;"><strong>Key decision point:</strong> Since the product launched only 11 days ago (May 4, 2026), user reviews and forum discussions are essentially nonexistent. Professional reviews from Coffeeness were the most substantive source. Exact physical dimensions and weight were not published on any accessible page — likely only available in the user manual or on the KitchenAid product page (which blocked/timed out).</p>
+
+  <h3 style="margin-top:1.2rem;">Round 2: Third-Party Review Deep Dive</h3>
+  <ol start="14">
+    <li><strong>Web Search: "KitchenAid KF4 KES8454 review hands-on test 2026"</strong> — Confirmed only 3 outlets with hands-on reviews: Coffeeness, The Kitchn, CoffeeKev.</li>
+    <li><strong>Web Search: "KitchenAid compact automatic espresso iced coffee review blog 2026"</strong> — Found additional first-look articles from Homes &amp; Gardens, VITA Daily, Coffee Geography, Gear Diary.</li>
+    <li><strong>Web Search: YouTube reviews</strong> — No KF4-specific video reviews found. Only an older KitchenAid Artisan video exists.</li>
+    <li><strong>WebFetch: Yahoo Shopping / AOL (The Kitchn syndication)</strong> — Successfully extracted the full The Kitchn review via syndicated version. Reviewer tested KF4 pre-launch: "caf&eacute;-quality" drinks, "never paying for a $7 latte again." Noted self-rinse cycle as minor annoyance.</li>
+    <li><strong>WebFetch: Homes &amp; Gardens</strong> — First-look only (KF2 focus). Referenced their 4.5/5 score on KF6 for context.</li>
+    <li><strong>WebFetch: Coffee Geography</strong> — Pre-launch coverage only, no original insights beyond press release material.</li>
+    <li><strong>WebFetch: CoffeeKev, VITA Daily, Gear Diary</strong> — All returned 403 (bot blocking).</li>
+  </ol>
+
+  <p style="margin-top:0.8rem;"><strong>Key findings:</strong> Only 3 hands-on reviews exist (Coffeeness, The Kitchn, CoffeeKev). All are positive. The consensus: great espresso, very quiet, intuitive touchscreen, but milk foam trails competitors and no non-dairy support. No user reviews, forum discussions, or YouTube content exists yet — the machine launched just 11 days ago. Exact physical dimensions and weight remain unpublished on any accessible page.</p>
 </div>
 
 <!-- Sources -->
-<h2 id="sources">8. Sources</h2>
+<h2 id="sources">9. Sources</h2>
 
 <ul class="sources">
   <li><a href="https://www.kitchenaid.com/countertop-appliances/coffee-products/espresso-machine/p.fully-automatic-espresso-machine-kf4-with-iced-coffee.KES8454PL.html">KitchenAid — KF4 Porcelain White Product Page</a></li>
@@ -441,6 +577,11 @@
   <li><a href="https://www.comunicaffe.com/kitchenaid-brand-expands-espresso-collection-with-new-fully-automatic-espresso-machines-with-iced-coffee/">Comunicaffè — KitchenAid Espresso Collection Expansion</a></li>
   <li><a href="https://www.stocktitan.net/news/WHR/kitchen-aid-brand-expands-espresso-collection-with-new-fully-v8u6w9mccoiu.html">Stock Titan / Whirlpool — Official Press Release</a></li>
   <li><a href="https://coffeekev.com/kitchenaid-espresso-machine/">CoffeeKev — KitchenAid Espresso Machine Review 2026</a></li>
+  <li><a href="https://shopping.yahoo.com/home-garden/kitchen/articles/tried-kitchenaid-compact-espresso-machine-194500875.html">Yahoo Shopping (The Kitchn syndication) — "I'm Never Paying for a $7 Latte Again"</a></li>
+  <li><a href="https://www.homesandgardens.com/kitchens/appliances/kitchenaids-new-compact-espresso-machine">Homes &amp; Gardens — KitchenAid Compact Espresso Machine First Look</a></li>
+  <li><a href="https://coffeegeography.com/2026/04/15/kitchenaid-unveils-quiet-compact-fully-automatic-espresso-machines-built-to-perfect-iced-coffee-at-home/">Coffee Geography — KitchenAid Unveils Quiet, Compact Espresso Machines</a></li>
+  <li><a href="https://geardiary.com/2026/05/04/kitchenaid-fully-automatic-espresso-machines/">Gear Diary — KitchenAid Fully Automatic Espresso Machines</a></li>
+  <li><a href="https://vitamagazine.com/2026/05/01/kitchenaid-just-solved-the-iced-coffee-problem-meet-the-espresso-machines-built-for-summer/">VITA Daily — KitchenAid Solved The Iced Coffee Problem</a></li>
 </ul>
 
 </div>

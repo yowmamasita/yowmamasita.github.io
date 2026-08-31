@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Private Note</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 80vh;
+      color: #999;
+      text-align: center;
+    }
+    #error h1 { font-size: 1.3rem; margin-bottom: 0.5rem; }
+    #error p { font-size: 0.95rem; }
+  </style>
+</head>
+<body>
+  <div id="error">
+    <h1>This note requires a valid link</h1>
+    <p>Ask the person who shared it for the full URL.</p>
+  </div>
+
+  <script>
+    (async function () {
+      const keyStr = location.hash.slice(1);
+      if (!keyStr) return;
+
+      const encData = "p1thW99Nk_PXqNK-Rzh4nmFNBaDCXdHnsnz7Xfg3njUneYKQqCiV6aSb9DblA1UsPO4BYR9avxUC_qa86XKs_wjI9-W7HDINxDd1a2SkM7dj-NeMnbVK2yfCCfuVJnGhZgxZ86tnA5W1P0mKk9InpSWb2lKt6o0D_r3gdTbjdwzAloSRIMM2hh29Yw72yELjB-A5aBNAYT-JSNAayZR3TbrgSDCrqQ_nDTpZvzw6d7BeKe6q5LcL8BrQyHc2SsS0i-DRrOxzhUSFVechNX8w-0pWjHMb6aG6ahM-LjIyAJKVSlAglZyFkITUGT398zHCgEe3Wuok2GebMBguE6Dxj5Lc2S8zMr5mOu86etI7vz2kVTrjCQRVFTvRrtGBXSQeXEc-p6p6CANMcF5G17sduhQfzxaZPT6aUb_QkGuOa8vsdDXaGnQHSha8ORSgjy2p4hsY21nQpla1jHdeNMJJ5beRk636-JlPODf67ma9y9e2w_JAxFJTbLvzfc9pYlhtknI24CxTbH2fqoJUyAs5Z7kNiwyzDaoDeAsXNPmGX9Wqk9t_iKmUfj_csaWER5vlxt6EJs5792zeoQgOJEWcdVRGfrFaIIncFVP8b7lS-8uqVxAVhjuf59_b6VUIfX_R2Sn2gE3mFD1MipSZJVpDrHiDn4jmceYUumJsIr4pbE_gYUjB_2EN5BL0v7KIPguH2XcYds0OiSaZkBpH9vxK_k_NpT-Gz1ek3J_TK_usoOIOsWWR9eogSww9BYUbhtINV4gQpZuGHQ3zBZFfU-YvXKPN2aBx44ESOR3KTHgcahwsfk8Yf0xOO-sXNYRiKt_ltE2lCkqVoo63WRsbj-GPURjMnu2UXmwdFALO-t_iPUn4RE9LwlO_mkeH2DWu_ZokhbthnD4qIcTNE3SNItx-3jWCyzINdZ3YDyvCCVSuHt2Kb50ziNdtK4ThpXTc6_swRz2D8x-KzRMo1Z_-GbRX3aBMeaeL90kjtNDQb-rxhMFSitd0CN3kan5g3w1O8XGy4UcGXmhJD_HInjqOCoCe77_4KIYAbr9xrgvKNZxW8fvAgC7fZsTg7TwMWbmizB-RAvCfjKKXfAqI11yr3RfKnmqiwno95VR1zHkP6hIGGb3Xc-bFqXCmfBx_tv1ZV-aDA1mzsGVzAY8uhLEJX3o1WDo_vXNt1jL84SNv8KiH4-KSCjx0lnd-1OrRYkJ4OaPSTI0ZSLBD2SmLbUkjHsaVfcRptO9mB6MWV75H9E6xiGU7Zh0v1ziTWcGHGAiYsiO-nfCo4Jv6TKy3vLqKjepi6IkeZqlrYqEwF5eCUr_ODQrRlO8teHrVt5IKUP15EHtxZUMpfOKq3dbJyJoFjzC2rgWRCtnCdNwPKhkU8b26znapKSfmxwasWdlUltUmEHvyVSnuAX0YQD-igEX_o42JemVNC3I3EERwv6J2fZ6wN28kZX5oAyUr3iIp6CmBcxs3GF8vQBdcUgeeBkAynUKBX14iZwla-C8gW-20-b0kdp9pc1AsTI5ZsHYKjPzsIdqX3eO4LbiruWwGOu64MQHHR4yC6GGuRDX4ssaFtkF5Lm7G22okfhCF6YG264S7LGEr-psM5DAX3oReMFrCF5lWT974vDP4Drq1NSs6YNlYQFl8QwZP15NOFcvpffJIeDjgoXTDppDTwCUzx4SxDc0B6OnNFCt9Hh-DUnnEz1zbKV6aW64b-OCrGdUrWYdWu8Zcnixn6zolbOeLR_Zh-kEnLTx3Z8OIOSRacPQNWN5f5mh5TErayP1KJSt3MRAYrfzlFtHvhrs76WBIbijr0SSyMsqF9XRqREoWiyPG9X-g5V6cW7km96ssCNC6Mo2Luzrmh2YNCLg5DEQp1quPGn8Uqq1lGzERp-GptPYyTHLBp4jrvXBnQY1Oaj6ijEaDq4ilvGb5DVvxmX3ZpAdfVj3myb6-R3wbB505TgqS0Kdiylb6uGjatMXZMPivt3H0xgUapi5zvimru6eb0XiGJtOQj2xuWEIFDcxu-M1uacch_lrLkBHmwPeARHwYxTobfME5x0ZmD5Ib0o1_XwaSDOOwzn8SWqjcmmQb1gZLq2--Qf5JlMhD0KdfT5fZD6UvnLNY8ICuxSAJkVQR4hNCg5bs4FVGBuLtiDHWgU-CbWjLFqSTYAt4he1OP6wlT15q2aMNy3VJsHlvJ7NUmLC_7noAn2NJD1Qn7tc2HXRPQx8aVqjibp0hpKoTQfLo-2tlagh0ceIeKY5L7lhGrfXvGKMVgM5mpjWroDQJ7ApenLP6HdprKSIPbax2qKaeC-NcSYDRvIwMi3gt57mvyaEmPXdwb4XnbIXUt-E1-wph1Qbp_4ytbqBku45QpvvD5a9l4JuS__RyYSl8TubF2Da5JvfdrdmhWJYRXQ9l6RxPrHaMqCl-zI2jOl8iB3-GWiTMu6mkEV1nhQgAA1r-apf8gHBPjtGmMp8BzveqZiUX1bGQdeaACcj8OotbI7jzJB8vBFFM8UlkjhC7hR-wMu3fNdZnUIhQ1HuDeQLfSoS_SgH2fkv1km1VuqeUNd-We8XhONBnAfDu9PazVg";
+
+      function base64urlDecode(s) {
+        s = s.replace(/-/g, "+").replace(/_/g, "/");
+        while (s.length % 4) s += "=";
+        return Uint8Array.from(atob(s), c => c.charCodeAt(0));
+      }
+
+      try {
+        const keyBuf = base64urlDecode(keyStr);
+        const raw = base64urlDecode(encData);
+
+        const iv = raw.slice(0, 12);
+        const tag = raw.slice(12, 28);
+        const ciphertext = raw.slice(28);
+
+        const combined = new Uint8Array(ciphertext.length + 16);
+        combined.set(ciphertext);
+        combined.set(tag, ciphertext.length);
+
+        const key = await crypto.subtle.importKey(
+          "raw", keyBuf, "AES-GCM", false, ["decrypt"]
+        );
+
+        const plain = await crypto.subtle.decrypt(
+          { name: "AES-GCM", iv }, key, combined
+        );
+
+        const html = new TextDecoder().decode(plain);
+        const blob = new Blob([html], { type: "text/html;charset=utf-8" });
+        location.replace(URL.createObjectURL(blob));
+      } catch {
+        // wrong key or tampered data — leave the error message visible
+      }
+    })();
+  </script>
+</body>
+</html>
